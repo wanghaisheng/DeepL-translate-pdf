@@ -43,10 +43,12 @@ target_language codes (specific):
 
 """
 
+pdffilename = os.getenv('pdffilename').strip()
+target_language = os.getenv('target_language').strip()
 def main():
-    pdf_file = os.path.join(pathlib.Path(__file__).resolve().parent, "files", "sample.pdf")
+    pdf_file = os.path.join(pathlib.Path(__file__).resolve().parent, "files",pdffilename )
     translator = deepl.Translator(config.auth_key) 
-    target_language = "FR"
+    target_language = target_language
 
     fin_translation = ""
     with fitz.open(pdf_file) as doc:
